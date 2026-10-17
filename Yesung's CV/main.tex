@@ -1,0 +1,144 @@
+%-------------------------------------
+% Resume in LaTeX (XeLaTeX)
+% Author:  Adapted for Yesung Hwang
+%-------------------------------------
+
+\documentclass[a4paper,10pt]{article}
+\usepackage{myresume}  % Custom style package
+\usepackage[hidelinks]{hyperref}
+\usepackage{fontawesome}
+
+% --------------------  START  --------------------
+\begin{document}
+
+% -------------------- HEADING --------------------
+\begin{flushright}
+  \setstretch{0.6}
+  \item {\Calluna \Large \href{https://github.com/yesung31}{\faGithub} 
+  \href{https://www.linkedin.com/in/yesung-hwang-a4b4a0223/}{\faLinkedinSquare} 
+  \href{https://yesung31.github.io}{\faHome}}
+  % Changed email to mailto hyperlink
+  \item {\Calluna \href{mailto:yesung.hw@gmail.com}{yesung.hw@gmail.com}}  % E-mail address
+  % Updated website URL and made it a hyperlink
+\end{flushright}\vspace{-45pt}
+
+\begin{flushleft}
+  {\Calluna \fontsize{30pt}{30pt}\selectfont \textsc{Yesung Hwang}} \quad {\Calluna \fontsize{14.5pt}{14.5pt}\selectfont \textsc{M.Sc.}}
+  \noindent\rule{\textwidth}{0.4pt}
+\end{flushleft}
+
+% -------------------- EDUCATION --------------------
+\sectionBlock{
+\section{Education}
+}{
+\eduHeading
+  {\href{https://www.tue.nl}{Eindhoven University of Technology}}{Eindhoven, The Netherlands}
+  {M.Sc. in Artificial Intelligence and Engineering Systems}{2024.09 -- 2026.08}
+\itemListStart
+  \myItem{Thesis: \textit{Learning Structured and Abstract Representation for Out-of-Distribution Generalization in AI}}
+  \myItem{Thesis Supervisor: \href{https://sites.google.com/view/devendradhami}{Dr. Devendra Dhami}, Assistant Professor}
+  \myItem{Final Grade: 9.54/10.0, cum laude (Dutch Grading System)}
+\itemListEnd
+
+\eduHeading
+  {\href{https://www.yonsei.ac.kr}{Yonsei University}}{Seoul, Republic of Korea}
+  {B.Sc. in Electrical and Electronic Engineering, Minor in Physics}{2015.03 -- 2023.08}
+\itemListStart
+  \myItem{Thesis: \textit{Accelerated mGRE Image Reconstruction for MWI via Deep Learning}}
+  \myItem{Thesis Supervisor: Prof. \href{https://kimchi.yonsei.ac.kr}{Dong-hyun Kim}}
+  \myItem{Final Grade: 4.06/4.30} (Korean Grading System)
+\itemListEnd
+}
+
+% -------------------- WORK EXPERIENCE --------------------
+\sectionBlock{
+\section{Experience}
+}{
+\eduHeading
+  {\href{https://www.tno.nl/en/}{TNO}}{Helmond, The Netherlands}{Team Internship, as a Part of AI\&ES Program}{2025.02 -- 2025.06}
+\itemListStart
+  \myItem{\textbf{Traffic Light Perception System for Automated Driving in the Netherlands} \\ Delivered full-stack solution for traffic light perception: data collection, annotation, object detection, and 3D tracking.}
+\itemListEnd
+
+\eduHeading
+  {\href{https://www.kaist.ac.kr}{KAIST} (\href{https://visualai.kaist.ac.kr}{Visual AI Lab})}{Daejeon, Republic of Korea}{Undergraduate Intern, advised by \href{https://mhsung.github.io}{Dr. Minhyuk Sung}, (Assoc. Prof.)}{2021.12 -- 2022.12}
+\itemListStart
+  \myItem{\textbf{Hyperbolic Embedding Space for Language-driven Shape Manipulation} \\ Derived the projection of text to shape region in hyperbolic CLIP embedding space to reduce training time.}
+  \myItem{\textbf{Differentiable Discrete Poisson Solver} \\ Devised fast differentiable Poisson equation solver, enabling deep learning integration.}
+\itemListEnd
+
+\eduHeading
+  {\href{https://www.kakaomobility.com}{Kakao Mobility}}{Seoul, Republic of Korea}{Research Intern}{2021.07 -- 2021.08}
+\itemListStart
+  \myItem{Developed real-time continuous-time SLAM using bounded surface features for large-scale indoor mapping.}
+  \myItem{Implemented multi-LiDAR movement distortion correction using IMU and LiDAR–LiDAR calibration.}
+\itemListEnd
+
+\eduHeading
+  {Stryx (acquired by \href{https://www.kakaomobility.com}{Kakao Mobility})}{Seoul, Republic of Korea}{Research Intern}{2020.01 -- 2021.02}
+\itemListStart
+  \myItem{Developed pointcloud registration algorithms for city-scale HD mapping.}
+  \myItem{Designed GPS noise detection and reduction methods for precise localization.}
+  \myItem{Improved SLAM feature extraction for indoor–outdoor map integration.}
+  \myItem{Worked on LiDAR+IMU localization algorithms for tunnels.}
+\itemListEnd
+
+\eduHeading
+  {Republic of Korea Army}{Republic of Korea}{Coast Guard}{2018.03 -- 2019.11}
+\itemListStart
+  \myItem{Mandatory Military Service.}
+\itemListEnd
+}
+
+% ----------- PUBLICATIONS AND PATENTS -----------
+\sectionBlock{
+\section{Patents}
+}{
+\noindent \emph{Method of estimating the location of a moving object using vector map} \hfill 2020 \\ (KR102624644B1) 
+\itemListStart
+  \myItem{Work done at \href{https://www.kakaomobility.com}{Kakao Mobility}.}
+\itemListEnd
+}
+
+
+% -------------------- AWARDS --------------------
+\sectionBlock{
+\section{Awards}
+}{
+\noindent \emph{Yonsei Honors Program – Merit-based Full Scholarship}, Yonsei University \hfill 2015.03
+}
+
+% -------------------- SKILLS --------------------
+\sectionBlock{
+\section{Skills}
+}{
+\skillListStart
+\item \emph{Programming}: {\Courier Python}, {\Courier C++}, {\Courier C\#}, {\Courier ROS}, {\Courier Git}, {\Courier Unity}
+\item \emph{Languages}: Korean (Native), English (C1), Dutch (A1)
+\skillListEnd
+}
+
+% -------------------- EXTRA --------------------
+\sectionBlock{
+\section{Extras}
+}{
+\internHeading
+  {Backpacking}{Around the World}{2017.07 -- 2017.09, 2023.02 -- 2023.08}
+\itemListStart
+  \myItem{Personal exploration.}
+\itemListEnd
+\internHeading
+  {Playing/Listening Music}{Jazz/Rock/House}{Whenever I have time}
+\itemListStart
+  \myItem{Playing Guitar, Bass and sometimes Djembe.}
+\itemListEnd
+\internHeading
+  {Guitar/Bass Effect Development}{Audio Circuit Design}{Whenever I have time}
+\itemListStart
+  \myItem{Nonlinear analog circuit design for guitar/bass signal processing.}
+  \myItem{Simulation of effects/amplifiers for real-time deployment based on \href{https://www.neuralampmodeler.com}{NAM}.}
+  \myItem{Building effect pedals with designed circuits.}
+\itemListEnd
+}
+
+\end{document}
