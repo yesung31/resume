@@ -15,16 +15,38 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Detect root TeX file and compiler
+        id: detect
+        run: |
+          # Automatically find the file containing \documentclass
+          ROOT_FILE=$(grep -rl '\\documentclass' . --include="*.tex" | head -n 1 | sed 's|^\./||')
+          if [ -z "$ROOT_FILE" ]; then
+            echo "Error: No .tex file with \\documentclass found!"
+            exit 1
+          fi
+          echo "Found root LaTeX file: $ROOT_FILE"
+          echo "root_file=$ROOT_FILE" >> $GITHUB_OUTPUT
+
+          # Detect if fontspec or xelatex is required (common in modern resume templates)
+          if grep -qiE "fontspec|fontawesome5|awesome-cv" "$ROOT_FILE"; then
+            echo "compiler=xelatex" >> $GITHUB_OUTPUT
+          else
+            echo "compiler=pdflatex" >> $GITHUB_OUTPUT
+          fi
+
       - name: Compile LaTeX to PDF
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: main.tex # Change to cv.tex if your main file is named differently
-          compiler: pdflatex # Or xelatex / lualatex if your template requires it
+          root_file: ${{ steps.detect.outputs.root_file }}
+          compiler: ${{ steps.detect.outputs.compiler }}
 
       - name: Rename PDF
         run: |
-          # Finds the compiled pdf and names it resume.pdf
           PDF_NAME=$(find . -maxdepth 1 -name "*.pdf" | head -n 1)
+          if [ -z "$PDF_NAME" ]; then
+            echo "Error: No PDF was generated!"
+            exit 1
+          fi
           mv "$PDF_NAME" resume.pdf
 
       - name: Publish to Latest Release
