@@ -27,18 +27,18 @@ jobs:
           echo "Found root LaTeX file: $ROOT_FILE"
           echo "root_file=$ROOT_FILE" >> $GITHUB_OUTPUT
 
-          # Detect if fontspec or xelatex is required (common in modern resume templates)
-          if grep -qiE "fontspec|fontawesome5|awesome-cv" "$ROOT_FILE"; then
-            echo "compiler=xelatex" >> $GITHUB_OUTPUT
+          # Detect if fontspec or xelatex is required across TeX files and packages
+          if grep -rqiE "fontspec|fontawesome|awesome-cv|xelatex" . --include="*.tex" --include="*.sty" --include="*.cls"; then
+            echo "use_xelatex=true" >> $GITHUB_OUTPUT
           else
-            echo "compiler=pdflatex" >> $GITHUB_OUTPUT
+            echo "use_xelatex=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Compile LaTeX to PDF
         uses: xu-cheng/latex-action@v3
         with:
           root_file: ${{ steps.detect.outputs.root_file }}
-          compiler: ${{ steps.detect.outputs.compiler }}
+          latexmk_use_xelatex: ${{ steps.detect.outputs.use_xelatex }}
 
       - name: Rename PDF
         run: |
