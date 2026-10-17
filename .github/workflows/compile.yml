@@ -1,0 +1,39 @@
+name: Compile and Release Resume
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX to PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex # Change to cv.tex if your main file is named differently
+          compiler: pdflatex # Or xelatex / lualatex if your template requires it
+
+      - name: Rename PDF
+        run: |
+          # Finds the compiled pdf and names it resume.pdf
+          PDF_NAME=$(find . -maxdepth 1 -name "*.pdf" | head -n 1)
+          mv "$PDF_NAME" resume.pdf
+
+      - name: Publish to Latest Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest Resume
+          draft: false
+          prerelease: false
+          files: resume.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
